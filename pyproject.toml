@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "hw-04"
+version = "0.1.0"
+description = ""
+authors = ["Лизанька <fedko.liza@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiohttp = "^3.11.16"
+sqlalchemy = "^2.0"
+asyncpg = "^0.30.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
