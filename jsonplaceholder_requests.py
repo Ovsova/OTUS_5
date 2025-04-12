@@ -7,6 +7,7 @@ import asyncio
 USERS_DATA_URL = "https://jsonplaceholder.typicode.com/users"
 POSTS_DATA_URL = "https://jsonplaceholder.typicode.com/posts"
 
+
 async def fetch_json(url: str, session: aiohttp.ClientSession) -> dict:
     async with session.get(url) as response:
         return await response.json()
@@ -29,5 +30,5 @@ async def main():
         print(f"Posts: {len(posts)}")
 
 
-if __name__ == "__main__":
-    asyncio.run(main())
+# if __name__ == "__main__":
+#     asyncio.run(main())
