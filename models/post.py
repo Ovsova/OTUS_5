@@ -21,7 +21,7 @@ class Post(Base):
     __tablename__ = "posts"
 
     title: Mapped[str] = mapped_column(
-        String(140),
+        String(255),
         default="",
         server_default="",
     )
