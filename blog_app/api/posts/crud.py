@@ -1,8 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
-from schemas import PostCreate
-from models import Post
+from blog_app.schemas import PostCreate
+from blog_app.models import Post
 
 
 class PostCRUD:

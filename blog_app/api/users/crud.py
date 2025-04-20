@@ -1,8 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from schemas import UserCreate
-from models import User
+from blog_app.schemas import UserCreate
+from blog_app.models import User
 
 
 class UsersCRUD:

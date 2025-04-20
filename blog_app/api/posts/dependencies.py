@@ -4,8 +4,8 @@ from typing import Annotated
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from api.posts.crud import PostCRUD
-from models.db import async_session
+from blog_app.api.posts.crud import PostCRUD
+from blog_app.models.db import async_session
 
 
 async def get_async_session() -> AsyncGenerator[AsyncSession, None]:

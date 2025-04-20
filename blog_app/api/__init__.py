@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from api.users import router as api_user
-from api.posts import router as api_posts
+from blog_app.api.users import router as api_user
+from blog_app.api.posts import router as api_posts
 
 
 router = APIRouter(

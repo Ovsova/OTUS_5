@@ -11,7 +11,7 @@ from sqlalchemy.orm import (
     relationship,
 )
 
-from models.base import Base
+from .base import Base
 
 if TYPE_CHECKING:
     from .user import User

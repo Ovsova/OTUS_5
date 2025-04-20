@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from api.posts.views import router as posts_router
+from blog_app.api.posts.views import router as posts_router
 
 router = APIRouter(
     prefix="/posts",

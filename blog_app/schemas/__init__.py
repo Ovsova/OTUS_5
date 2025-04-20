@@ -5,8 +5,12 @@ __all__ = (
     "PostCreate",
 )
 
-from schemas.user import (
+from .user import (
     UserRead,
     UserCreate,
 )
 
+from .post import (
+    PostRead,
+    PostCreate,
+)

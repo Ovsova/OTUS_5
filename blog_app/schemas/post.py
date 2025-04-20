@@ -1,8 +1,10 @@
 from typing import Annotated, Optional
 
-from schemas.user import UserRead
+from .user import UserRead
 from pydantic import BaseModel, Field
 
+import os
+print("Текущая рабочая директория:", os.getcwd())
 
 class PostBase(BaseModel):
     title: str

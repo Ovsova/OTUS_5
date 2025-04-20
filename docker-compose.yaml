@@ -24,15 +24,11 @@ services:
       BLOG_CONFIG__DB__HOST: pg
       BLOG_CONFIG__DB__USER: app
       BLOG_CONFIG__DB__PASSWORD: ${POSTGRES_PASSWORD}
-    command:
-      - gunicorn
-      - app:app
-      - --workers
-      - "2"
-      - --worker-class
-      - uvicorn.workers.UvicornWorker
-      - --bind
-      - 0.0.0.0:8080
+    command: >
+      gunicorn blog_app.app:app
+      --workers 2
+      --worker-class uvicorn.workers.UvicornWorker
+      --bind 0.0.0.0:8080
     ports:
       - "8000:8080"
     depends_on:

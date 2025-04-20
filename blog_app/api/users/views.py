@@ -4,8 +4,8 @@ from fastapi import APIRouter, HTTPException, status, Depends
 
 from pydantic import PositiveInt
 
-from schemas import UserRead, UserCreate, PostRead, PostCreate
-from models import User, Post
+from blog_app.schemas import UserRead, UserCreate, PostRead, PostCreate
+from blog_app.models import User, Post
 from .crud import UsersCRUD
 from .dependencies import get_user_by_token, users_crud
 

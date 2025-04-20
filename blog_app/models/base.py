@@ -1,7 +1,7 @@
 from sqlalchemy import MetaData
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
-from config import settings
+from blog_app.config import settings
 
 
 class Base(DeclarativeBase):
