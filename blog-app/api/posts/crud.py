@@ -15,8 +15,12 @@ class PostCRUD:
         return list(result.scalars().all())
 
     async def get_by_id(self, post_id: int) -> Post | None:
-        # await asyncio.sleep(0.5)
-        return await self.session.get(Post, post_id)
+        statement = select(Post).options(selectinload(Post.author)).where(Post.id == post_id)
+        result = await self.session.execute(statement)
+        post = result.scalar_one_or_none()
+        if post and not post.author:
+            await self.session.refresh(post, ["author"])
+        return post
 
     async def create(self, post_in: PostCreate) -> Post:
         post = Post(title=post_in.title,

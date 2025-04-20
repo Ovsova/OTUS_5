@@ -3,14 +3,14 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent))
-import config
+# sys.path.append(str(Path(__file__).parent.parent))
+from config import settings
 
 engine = create_async_engine(
-    config.SQLA_PG_URL,
-    echo=config.SQLA_ECHO,
-    pool_size=config.SQLA_POOL_SIZE,
-    max_overflow=config.SQLA_MAX_OVERFLOW,
+    url = settings.db.async_url,
+    echo=settings.db.echo,
+    pool_size=settings.db.pool_size,
+    max_overflow=settings.db.max_overflow,
 )
 
 async_session = async_sessionmaker(

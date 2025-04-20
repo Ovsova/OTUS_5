@@ -47,10 +47,14 @@ async def get_post(
         crud: Annotated[PostCRUD, Depends(post_crud)],
 ) -> Post:
     post = await crud.get_by_id(post_id=post_id)
-    if post:
-        return post
+    if not post:
+        raise HTTPException(status_code=404)
+    if not post.author:
+        await crud.session.refresh(post, ["author"])
+        if not post.author:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Author not loaded for post {post_id}"
+            )
 
-    raise HTTPException(
-        status_code=status.HTTP_404_NOT_FOUND,
-        detail=f"Post #{post_id} not found",
-    )
+    return post

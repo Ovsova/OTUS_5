@@ -10,8 +10,14 @@ from models.db import async_session
 
 async def get_async_session() -> AsyncGenerator[AsyncSession, None]:
     async with async_session() as session:
-        yield session
-        await session.close()
+        async with session.begin():
+            try:
+                yield session
+            except Exception:
+                await session.rollback()
+                raise
+            finally:
+                await session.close()
 
 def post_crud(
     session: Annotated[

@@ -10,7 +10,3 @@ from schemas.user import (
     UserCreate,
 )
 
-from schemas.post import (
-    PostRead,
-    PostCreate,
-)

@@ -10,15 +10,10 @@ class PostBase(BaseModel):
 
 
 class PostCreate(PostBase):
-    """
-    Create post
-    """
     user_id: int
 
+
 class PostRead(PostBase):
-    """
-    Read post
-    """
     id: int = Field(example=42)
-    author: Optional[UserRead] = None
+    author: UserRead
 
