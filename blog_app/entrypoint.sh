@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
-export PYTHONPATH="${PYTHONPATH}:/var/app"
+echo "Apply migrations"
+
+alembic upgrade head
+
+echo "Migrations OK"
 
 exec "$@"

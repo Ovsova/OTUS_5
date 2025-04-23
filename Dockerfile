@@ -15,22 +15,14 @@ RUN poetry config virtualenvs.in-project true
 
 RUN poetry install --no-interaction --only main --sync
 
-RUN touch README.md
-
 
 ENV PATH="/var/app/.venv/bin:$PATH"
 
 COPY blog_app ./blog_app/
 
-RUN .venv/bin/python -c "import fastapi; print(f'FastAPI version: {fastapi.__version__}')"
-
-RUN .venv/bin/python -c "from blog_app.app import app; print('App imported successfully!')"
-
-
-
 #
-#RUN chmod +x ./entrypoint.sh
-##
-#ENTRYPOINT ["./entrypoint.sh"]
+COPY blog_app/entrypoint.sh /var/app/entrypoint.sh
+RUN chmod +x /var/app/entrypoint.sh
+ENTRYPOINT ["/var/app/entrypoint.sh"]
 
 #CMD ["gunicorn", "app:app", "--workers", "2", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8080"]
